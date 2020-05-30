@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row ">
+        <div class="col-md-4 col-sm-6" *ngFor="let item of ListComputer">
+            <div class="box1 mt-4">
+                <img src="http://localhost:64632/Content/{{item.Img}}" alt="{{item.Name}} image"
+                    style="width:100%; height: 300px;">
+                <h3 class="title">{{item.Name}} &nbsp; {{item.Price | currency }}</h3>
+                <ul class="icon">
+                    <!-- <li><a routerLink="/EditComputer/{{item.ID}}" routerLinkActive="active"><i class="fa fa-edit"></i></a></li> -->
+                    <li><a href="#detailsModal{{item.ID}}" class="details" data-toggle="modal"><i
+                                class="fa fa-arrows-alt"></i></a></li>
+                    <!-- <li><a href="#deleteModal{{item.ID}}" class="delete" data-toggle="modal"><i class="fa fa-eraser"></i></a></li> -->
+                    <li><a routerLink=""
+                            (click)="AddFavourite(item.ID ,item.Name ,item.Price ,item.Quentity,item.Discount )"><i
+                                class="fa fa-bookmark-o"></i></a></li>
+                </ul>
+            </div>
+            <!-- Delete Modal HTML -->
+            <div id="deleteModal{{item.ID}}" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delete Product</h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete {{item.Name}} from Record?</p>
+                                <p class="text-muted"><small>This action cannot be undone.</small></p>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-info" data-dismiss="modal" value="Cancel">
+                                <input type="submit" (click)="DeleteRecord(item.ID)" class="btn btn-danger"
+                                    value="Delete">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Details Modal HTML -->
+            <div id="detailsModal{{item.ID}}" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Details Product</h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card" style="width: 100%">
+                                    <img class="card-img-top" src="http://localhost:64632/Content/{{item.Img}}"
+                                        alt="Image">
+                                    <div class="card-body">
+                                        <p class="card-text"></p>
+                                        <ul class="list-group">
+                                            <li class="list-group-item"><b>Name Of Product: </b>{{item.ID}}</li>
+                                            <li class="list-group-item"><b>Name Of Product: </b>{{item.Name}}</li>
+                                            <li class="list-group-item"><b>Price Of Product : </b>{{item.Price}}</li>
+                                            <li class="list-group-item"><b>Available Quentity : </b> {{item.Quentity}}
+                                            </li>
+                                            <li class="list-group-item"><b>Brand Of Product : </b> {{item.Brand}}</li>
+                                            <li class="list-group-item"><b>ModelNumer # : </b> {{item.ModelNumer}}</li>
+                                            <li class="list-group-item"><b>Ram : </b> {{item.Ram}}</li>
+                                            <li class="list-group-item"><b>HardDisk : </b> {{item.HardDisk}}</li>
+                                            <li class="list-group-item"><b>Discount Offer : </b>{{item.Discount}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/Favourite"
+                                    (click)="AddFavourite(item.ID ,item.Name ,item.Price ,item.Quentity,item.Discount )"
+                                    class="btn btn-info"><i class="fa fa-bookmark-o"></i> Add To favarite</a>
+                                <input type="button" class="btn btn-info" data-dismiss="modal" value="close">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

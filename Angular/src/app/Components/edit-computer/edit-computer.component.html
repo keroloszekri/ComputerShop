@@ -1,0 +1,139 @@
+<div class="row">
+    <div class="col-md-9">
+        <form #f [formGroup]="EditForm" (ngSubmit)="Edit()">
+
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" class="form-control" [(ngModel)]="this.EditComputer.Name" #Name
+                    formControlName="Name" name="Name" id="Name" [class.is-valid]="EditForm.controls['Name'].valid "
+                    [class.is-invalid]="EditForm.controls['Name'].invalid && EditForm.controls['Name'].touched">
+            </div>
+            <div [hidden]="EditForm.controls['Name'].valid || EditForm.controls['Name'].untouched "
+                class="alert alert-danger">
+                Name is required
+            </div>
+
+            <div class="form-group">
+                <label for="">Price</label>
+                <input type="number" class="form-control" [(ngModel)]="this.EditComputer.Price" formControlName="Price"
+                    name="Price" id="Price" [class.is-valid]="EditForm.controls['Price'].valid "
+                    [class.is-invalid]="EditForm.controls['Price'].invalid && EditForm.controls['Price'].touched">
+            </div>
+            <div [hidden]="EditForm.controls['Price'].valid || EditForm.controls['Price'].untouched "
+                class="alert alert-danger">
+                Price is required
+            </div>
+
+            <div class="form-group">
+                <label for="">Quentity</label>
+                <input type="number" class="form-control" formControlName="Quentity"
+                    [(ngModel)]="this.EditComputer.Quentity" name="Quentity" id="Quentity"
+                    [class.is-valid]="EditForm.controls['Quentity'].valid "
+                    [class.is-invalid]="EditForm.controls['Quentity'].invalid && EditForm.controls['Quentity'].touched">
+            </div>
+            <div [hidden]="EditForm.controls['Quentity'].valid || EditForm.controls['Quentity'].untouched "
+                class="alert alert-danger">
+                Quentity is required
+            </div>
+
+
+            <div class="form-group">
+                <label for="">Brand</label>
+                <input type="text" class="form-control" formControlName="Brand" name="Brand"
+                    [(ngModel)]="this.EditComputer.Brand" id="Brand"
+                    [class.is-valid]="EditForm.controls['Brand'].valid "
+                    [class.is-invalid]="EditForm.controls['Brand'].invalid && EditForm.controls['Brand'].touched">
+            </div>
+            <div [hidden]="EditForm.controls['Brand'].valid || EditForm.controls['Brand'].untouched "
+                class="alert alert-danger">
+                Brand is required
+            </div>
+
+
+            <div class="form-group">
+                <label for="">ModelNumer</label>
+                <input type="text" class="form-control" formControlName="ModelNumer" name="ModelNumer"
+                    [(ngModel)]="this.EditComputer.ModelNumer" id="ModelNumer"
+                    [class.is-valid]="EditForm.controls['ModelNumer'].valid "
+                    [class.is-invalid]="EditForm.controls['ModelNumer'].invalid && EditForm.controls['ModelNumer'].touched">
+            </div>
+            <div [hidden]="EditForm.controls['ModelNumer'].valid || EditForm.controls['ModelNumer'].untouched "
+                class="alert alert-danger">
+                ModelNumer is required
+            </div>
+
+
+            <div class="form-group">
+                <label for="">Ram</label>
+                <input type="number" class="form-control" formControlName="Ram" name="Ram"
+                    [(ngModel)]="this.EditComputer.Ram" id="Ram" [class.is-valid]="EditForm.controls['Ram'].valid "
+                    [class.is-invalid]="EditForm.controls['Ram'].invalid && EditForm.controls['Ram'].touched">
+            </div>
+            <div [hidden]="EditForm.controls['Ram'].valid || EditForm.controls['Ram'].untouched "
+                class="alert alert-danger">
+                Ram is required
+            </div>
+
+
+            <div class="form-group">
+                <label for="">HardDisk Space</label>
+                <input type="number" class="form-control" formControlName="HardDisk" name="HardDisk"
+                    [(ngModel)]="this.EditComputer.HardDisk" id="HardDisk"
+                    [class.is-valid]="EditForm.controls['HardDisk'].valid "
+                    [class.is-invalid]="EditForm.controls['HardDisk'].invalid && EditForm.controls['HardDisk'].touched">
+            </div>
+            <div [hidden]="EditForm.controls['HardDisk'].valid || EditForm.controls['HardDisk'].untouched "
+                class="alert alert-danger">
+                HardDisk is required
+            </div>
+
+
+            <div class="form-group">
+                <label for="">Discount</label>
+                <input type="number" class="form-control" formControlName="Discount"
+                    [(ngModel)]="this.EditComputer.Discount" name="Discount" id="Discount"
+                    [class.is-valid]="EditForm.controls['Discount'].valid "
+                    [class.is-invalid]="EditForm.controls['Discount'].invalid && EditForm.controls['Discount'].touched">
+            </div>
+            <div [hidden]="EditForm.controls['Discount'].valid || EditForm.controls['Discount'].untouched "
+                class="alert alert-danger">
+                Discount is required
+            </div>
+
+
+            <div class="form-group">
+                <label for="">Img</label>
+                <input type="file" (change)="onFileSelected($event)" [(ngModel)]="this.EditComputer.Img"
+                    class="form-control" formControlName="Img" name="Img" id="Img"
+                    [class.is-valid]="EditForm.controls['Img'].valid "
+                    [class.is-invalid]="EditForm.controls['Img'].invalid && EditForm.controls['Img'].touched">
+            </div>
+            <div [hidden]="EditForm.controls['Img'].valid || EditForm.controls['Img'].untouched "
+                class="alert alert-danger">
+                Img is required
+            </div>
+
+
+            <button class="btn btn-danger p-1" [disabled]="EditForm.invalid" type="submit"
+                style="width: 100%;">Edit</button>
+        </form>
+    </div>
+
+    <div class="col-md-3">
+        <!-- {{EditForm.value|json}} -->
+        <div class="cardmt-5" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>Name : </b> {{EditForm.get('Name').value }}</li>
+                <li class="list-group-item"><b>Price : </b>{{EditForm.get('Price').value}}</li>
+                <li class="list-group-item"><b>Quentity : </b> {{EditForm.get('Quentity').value}}</li>
+                <li class="list-group-item"><b>Brand : </b> {{EditForm.get('Brand').value}}</li>
+                <li class="list-group-item"><b>ModelNumer : </b> {{EditForm.get('ModelNumer').value}}</li>
+                <li class="list-group-item"><b>Ram : </b> {{EditForm.get('Ram').value}}</li>
+                <li class="list-group-item"><b>HardDisk : </b> {{EditForm.get('HardDisk').value}}</li>
+                <li class="list-group-item"><b>Discount : </b> {{EditForm.get('Discount').value}}</li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
